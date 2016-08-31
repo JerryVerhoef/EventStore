@@ -1120,7 +1120,6 @@ namespace EventStore.Core
                 {
                     IPAddress nonLoopbackAddress = GetNonLoopbackAddress();
                     IPAddress addressToAdvertise = _clusterNodeCount > 1 ? nonLoopbackAddress : IPAddress.Loopback;
-
                     if (_internalTcp.Address.Equals(IPAddress.Parse("0.0.0.0")))
                     {
                         intIpAddressToAdvertise = addressToAdvertise;
