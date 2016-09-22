@@ -26,9 +26,10 @@ if [[ $MONOPATH == "" ]]; then
     MONOPATH="/opt/mono"
 fi
 
-LD_LIBRARY_PATH=bin/tests:$MONOPATH/lib/:$LD_LIBRARY_PATH mono tools/nunit-3.4.1/bin/nunit3-console.exe bin/tests/EventStore.Core.Tests.dll $EXCLUDE 
+LD_LIBRARY_PATH=bin/tests:$MONOPATH/lib/:$LD_LIBRARY_PATH mono tools/nunit-3.4.1/bin/nunit3-console.exe bin/tests/EventStore.Core.Tests.dll $EXCLUDE
 rc=$?
-xsltproc tools/nunit-3.4.1/results.xslt inter
+# xsltproc tools/nunit-3.4.1/results.xslt TestResult.xml
+# rm inter
 if [[ $rc != 0 ]] ; then
     exit $rc
 fi
