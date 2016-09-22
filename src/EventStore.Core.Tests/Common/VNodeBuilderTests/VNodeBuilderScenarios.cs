@@ -12,7 +12,7 @@ namespace EventStore.Core.Tests.Common.VNodeBuilderTests
         protected ClusterVNodeSettings _settings;
         protected TFChunkDbConfig _dbConfig;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public virtual void TestFixtureSetUp()
         {
             _builder = TestVNodeBuilder.AsSingleNode()
@@ -24,7 +24,7 @@ namespace EventStore.Core.Tests.Common.VNodeBuilderTests
             _node.Start();
         }
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public virtual void TestFixtureTearDown()
         {
             _node.Stop();
@@ -43,7 +43,7 @@ namespace EventStore.Core.Tests.Common.VNodeBuilderTests
         protected int _clusterSize = 3;
         protected int _quorumSize;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public virtual void TestFixtureSetUp()
         {
             _builder = TestVNodeBuilder.AsClusterMember(_clusterSize)
@@ -56,7 +56,7 @@ namespace EventStore.Core.Tests.Common.VNodeBuilderTests
             _node.Start();
         }
         
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public virtual void TestFixtureTearDown()
         {
             _node.Stop();

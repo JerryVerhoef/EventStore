@@ -103,7 +103,7 @@ namespace EventStore.Core.Tests.Services.Transport.Http
                 {
                     x.Reply(new byte[0], 200, "", "", Helper.UTF8NoBom, null, e => new Exception());
                     CountdownEvent.Signal();
-                });
+                    });
             }
             else
             {
@@ -111,16 +111,16 @@ namespace EventStore.Core.Tests.Services.Transport.Http
                 {
                     CountdownEvent.Signal();
                     return new RequestParams(TimeSpan.Zero);
-                });
+                    });
             }
 
             var uriTemplate = new UriTemplate(route);
             var bound = uriTemplate.BindByPosition(new Uri("http://localhost:12345/"),
-                                                   Enumerable.Range(0,
-                                                                    uriTemplate.PathSegmentVariableNames.Count +
-                                                                    uriTemplate.QueryValueVariableNames.Count)
-                                                             .Select(x => "abacaba")
-                                                             .ToArray());
+             Enumerable.Range(0,
+                uriTemplate.PathSegmentVariableNames.Count +
+                uriTemplate.QueryValueVariableNames.Count)
+             .Select(x => "abacaba")
+             .ToArray());
             BoundRoutes.Add(Tuple.Create(bound.AbsoluteUri, verb));
         }
     }
@@ -128,7 +128,7 @@ namespace EventStore.Core.Tests.Services.Transport.Http
     [TestFixture]
     public class speed_test
     {
-        [Test, MightyMooseIgnore, Ignore]
+        [Test, MightyMooseIgnore, Ignore("speed test")]
         public void of_http_requests_routing()
         {
             const int iterations = 100000;
@@ -184,7 +184,7 @@ namespace EventStore.Core.Tests.Services.Transport.Http
             multiQueuedHandler.Stop();
         }
 
-        [Test, MightyMooseIgnore, Ignore]
+        [Test, MightyMooseIgnore, Ignore("speed test")]
         public void of_uri_router()
         {
             const int iterations = 100000;
