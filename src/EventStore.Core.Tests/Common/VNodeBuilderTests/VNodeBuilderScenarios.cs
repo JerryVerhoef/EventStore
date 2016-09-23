@@ -1,6 +1,7 @@
 using EventStore.Core.Cluster.Settings;
 using EventStore.Core.TransactionLog.Chunks;
 using NUnit.Framework;
+using System;
 
 namespace EventStore.Core.Tests.Common.VNodeBuilderTests
 {
@@ -27,7 +28,7 @@ namespace EventStore.Core.Tests.Common.VNodeBuilderTests
         [OneTimeTearDown]
         public virtual void TestFixtureTearDown()
         {
-            _node.Stop();
+            _node.Stop(TimeSpan.FromSeconds(20), true, true);
         }
 
         public abstract void Given();
@@ -59,7 +60,7 @@ namespace EventStore.Core.Tests.Common.VNodeBuilderTests
         [OneTimeTearDown]
         public virtual void TestFixtureTearDown()
         {
-            _node.Stop();
+            _node.Stop(TimeSpan.FromSeconds(20), true, true);
         }
 
         public abstract void Given();
