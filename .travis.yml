@@ -9,6 +9,6 @@ script:
 - ./run_travis_tests.sh
 - grep "test-run" TestResult.xml
 - ./check-test-results.sh
-notifications:
-  slack:
-    secure: Oyj2nouf/0aXiYSWHtygKFBAsUWKvOwSBFUj4s+dPMBroJihzTmwTorzVZuQleNnO20qYe7rBaD/5GVk/jYyeu5SAXgsS1ZwUrg/nho4HikouPpvkVqmdeyzKQVXXYs4B1ZHXcYIEikMSRCpRfHBy+UjMBrnUPjgjqmzqnjJ7Nc=
+# notifications:
+#  slack:
+#    secure: Oyj2nouf/0aXiYSWHtygKFBAsUWKvOwSBFUj4s+dPMBroJihzTmwTorzVZuQleNnO20qYe7rBaD/5GVk/jYyeu5SAXgsS1ZwUrg/nho4HikouPpvkVqmdeyzKQVXXYs4B1ZHXcYIEikMSRCpRfHBy+UjMBrnUPjgjqmzqnjJ7Nc=

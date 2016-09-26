@@ -89,13 +89,13 @@ namespace EventStore.Core.Tests.Http.PersistentSubscription
 
         protected override void When()
         {
-            _connection.ConnectToPersistentSubscription(TestStreamName, GroupName, (x, y) =>
+            _connection.ConnectToPersistentSubscriptionAsync(TestStreamName, GroupName, (x, y) =>
             {
                 replayedParkedEvent = y;
                 _eventParked.Set();
             },
             (x, y, z) => { },
-            DefaultData.AdminCredentials);
+            DefaultData.AdminCredentials).Wait();
 
             //Replayed parked messages
             var response = MakePost(SubscriptionPath + "/replayParked", _admin);
