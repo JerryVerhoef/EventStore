@@ -81,7 +81,10 @@ namespace EventStore.Core.Services.Transport.Http.Controllers
 
                     Publish(new GossipMessage.GossipReceived(new NoopEnvelope(), new ClusterInfo(clusterInfo), endPoint));
                 },
-                error => Publish(new GossipMessage.GossipSendFailed(error.Message, endPoint)));
+                error => {
+                    Log.ErrorException(error, "Failed to send gossip because of {0}", error.Message);
+                    Publish(new GossipMessage.GossipSendFailed(error.Message, endPoint));
+                });
         }
 
         private void OnPostGossip(HttpEntityManager entity, UriTemplateMatch match)
